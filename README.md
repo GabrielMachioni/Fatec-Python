@@ -1,4 +1,7 @@
 # Fatec-Python
+
+Alunos:
+    Gabriel e César
 Prova_B2_TopEspInformatica
 
 Objetivo: 
