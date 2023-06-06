@@ -1,0 +1,3 @@
+
+def criar_cadastro():
+    ...
