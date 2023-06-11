@@ -33,6 +33,8 @@ class Comentarios:
         """
         Adiconando um comentario no banco de dados
         """
+        self.tabela_exists()
+        
         conexao = sqlite3.connect('app.db')
         
         # Criando o cursor
@@ -62,10 +64,8 @@ class Comentarios:
         conexao = sqlite3.connect('app.db')
         
         cursor = conexao.cursor()
-
-        consulta = "SELECT id, nome_usuario, comentario FROM comentarios WHERE id_usuario = ?"
-
-        cursor.execute(consulta, (id))
+        
+        cursor.execute(f"SELECT id, nome_usuario, comentario FROM comentarios WHERE id_usuario = {id}")
 
         resultados = cursor.fetchall()
 
