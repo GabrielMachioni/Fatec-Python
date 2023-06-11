@@ -28,6 +28,7 @@ comentarios = """
 |1 - Ver comentários        |
 |2 - Editar comenrário      |
 |3 - Adicionar comentário   |
+|4 - Excluir comentário     |
 |                           |
 |9 - Sair                   |
 |___________________________|
@@ -86,5 +87,4 @@ tela_sobre = """
 |...                                                        |
 |___________________________________________________________|
 
-9 - Voltar
 """

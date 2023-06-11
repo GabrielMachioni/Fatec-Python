@@ -96,15 +96,14 @@ class Comentarios:
         """
         Excluir um comentario
         """
+        self.tabela_exists()
+
         conexao = sqlite3.connect('app.db')
         
         # Criando o cursor
         cursor = conexao.cursor()
         
-        consulta = "SELECT id, nome_usuario, comentario FROM comentarios WHERE id_usuario = ?"
-
-        # Executa a consulta usando o cursor
-        cursor.execute(consulta, (id))
+        cursor.execute(f"SELECT id, nome_usuario, comentario FROM comentarios WHERE id_usuario = {id}")
 
         # Obtendo os resultados
         resultados = cursor.fetchall()
@@ -119,7 +118,7 @@ class Comentarios:
             id_comentario_excluir = int(input('ID do comentario que deseja excluir: '))
         
             # Consulta SQL com parâmetro
-            consulta = "DELETE FROM comentarios WHERE id_comentario = ?"
+            consulta = "DELETE FROM comentarios WHERE id = ?"
 
             # Executa a consulta usando o cursor
             cursor.execute(consulta, (id_comentario_excluir,))

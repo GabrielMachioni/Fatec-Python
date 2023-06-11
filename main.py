@@ -66,6 +66,8 @@ def mostrar_sobre():
     """
     limpar_tela()
     print(telas.tela_sobre)  # TODO: adc sobre
+    enter = str(input('Aperte ENTER para continuar...'))
+    main()
 
 
 def user_logado(id):
@@ -200,7 +202,7 @@ def comentarios(id):
     """
     comen = Comentarios()
     op = int(input(telas.comentarios))
-    while op not in [1, 2, 3, 9]:
+    while op not in [1, 2, 3, 4, 9]:
         limpar_tela()
         printc('vermelho', 'Opção inválida, tente novamente: ')
         op = int(input(telas.comentarios))
@@ -213,6 +215,9 @@ def comentarios(id):
         
     elif op == 3:
         comen.adicionar_comentario(id)
+
+    elif op == 4:
+        comen.excluir_comentario(id)
 
     else:
         printc('verde', 'Saindo...')
