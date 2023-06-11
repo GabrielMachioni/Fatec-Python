@@ -43,7 +43,7 @@ class Comentarios:
         comentario = str(input("Seu comentário: "))
 
         # Executando a instrução de inserção
-        cursor.execute("INSERT INTO comentarios (id_usuario, nome_usuario, comentario) VALUES (?, ?)",
+        cursor.execute("INSERT INTO comentarios (id_usuario, nome_usuario, comentario) VALUES (?, ?, ?)",
                     (id, nome_usuario, comentario))
 
         # Commit para salvar as alterações
