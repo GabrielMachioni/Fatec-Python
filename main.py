@@ -78,16 +78,16 @@ def user_logado(id):
         op = int(input(telas.menu_login))
 
     if op == 1:
-        ver_receita()
+        ver_receita(id)
 
     elif op == 2:
-        adicionar_receita()
+        adicionar_receita(id)
         
     elif op == 3:
-        editar_receita()
+        editar_receita(id)
         
     elif op == 4:
-        importar_dados()
+        importar_dados(id)
         
     elif op == 5:
         comentarios(id)
@@ -101,31 +101,37 @@ def user_logado(id):
         sys.exit()
     
     
-def ver_receita():
+def ver_receita(id):
     """
     Visualizar receitas
     """
     limpar_tela()
     receitas = Receitas()
     receitas.visualizar_receitas()
+    enter = str(input('Aperte ENTER para continuar...'))
+    user_logado(id)
 
 
-def adicionar_receita():
+def adicionar_receita(id):
     """
     Adiconar nova receita
     """
     limpar_tela()
     receitas = Receitas()
     receitas.adicionar_receita()
+    enter = str(input('Aperte ENTER para continuar...'))
+    user_logado(id)
     
     
-def editar_receita():
+def editar_receita(id):
     """
     Editar receita
     """
     limpar_tela()
     receitas = Receitas()
     receitas.editar_receita()
+    enter = str(input('Aperte ENTER para continuar...'))
+    user_logado(id)
 
 
 def config_conta(id):
@@ -156,8 +162,11 @@ def config_conta(id):
         sleep(1)
         sys.exit()
         
+    enter = str(input('Aperte ENTER para continuar...'))
+    user_logado(id)
+        
     
-def importar_dados():
+def importar_dados(id):
     """
     Importar dados
     """
@@ -182,6 +191,8 @@ def importar_dados():
         sleep(1)
         sys.exit()
         
+    enter = str(input('Aperte ENTER para continuar...'))
+    user_logado(id)
     
 def comentarios(id):
     """
@@ -207,6 +218,9 @@ def comentarios(id):
         printc('verde', 'Saindo...')
         sleep(1)
         sys.exit()  
+        
+    enter = str(input('Aperte ENTER para continuar...'))
+    user_logado(id)
 
 if __name__ == '__main__':
     main()
