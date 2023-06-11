@@ -3,7 +3,10 @@ from time import sleep
 
 from utils import telas
 from utils.funcoes_auxiliares import printc, limpar_tela
-from usuario import cadastro, login
+from utils.receitas import Receitas
+from utils.importar_dados import Importar
+from utils.comentarios import Comentarios
+from usuario import cadastro, login, alterar_conta
 
 def main():
     """
@@ -38,9 +41,9 @@ def fazer_login():
     limpar_tela()
     login_user = login.Login()
 
-    login_user.get_infos()
+    id = login_user.get_infos()
 
-    user_logado()
+    user_logado(id)
 
 
 def fazer_cadastro():
@@ -62,33 +65,148 @@ def mostrar_sobre():
     Mostrar tela Sobre
     """
     limpar_tela()
-    print(telas.tela_sobre)
+    print(telas.tela_sobre)  # TODO: adc sobre
 
 
-def user_logado():
+def user_logado(id):
     limpar_tela()
     
     op = int(input(telas.menu_login))
-    while op not in [1, 2, 8, 9]:
+    while op not in [1, 2, 3, 4, 5, 8, 9]:
         limpar_tela()
         printc('vermelho', 'Opção inválida, tente novamente: ')
         op = int(input(telas.menu_login))
 
     if op == 1:
-        ...
+        ver_receita()
 
     elif op == 2:
-        ...
+        adicionar_receita()
+        
+    elif op == 3:
+        editar_receita()
+        
+    elif op == 4:
+        importar_dados()
+        
+    elif op == 5:
+        comentarios(id)
     
     elif op == 8:
-        ...
+        config_conta(id)
 
     else:
         printc('verde', 'Saindo...')
         sleep(1)
         sys.exit()
     
+    
+def ver_receita():
+    """
+    Visualizar receitas
+    """
+    limpar_tela()
+    receitas = Receitas()
+    receitas.visualizar_receitas()
+
+
+def adicionar_receita():
+    """
+    Adiconar nova receita
+    """
+    limpar_tela()
+    receitas = Receitas()
+    receitas.adicionar_receita()
+    
+    
+def editar_receita():
+    """
+    Editar receita
+    """
+    limpar_tela()
+    receitas = Receitas()
+    receitas.editar_receita()
+
+
+def config_conta(id):
+    """
+    Opções de configuração de conta
+    """
+    limpar_tela()
+    
+    alt_cont = alterar_conta.AlterarConta()
+    
+    op = int(input(telas.config_conta))
+    while op not in [1, 2, 3, 9]:
+        limpar_tela()
+        printc('vermelho', 'Opção inválida, tente novamente: ')
+        op = int(input(telas.config_conta))
+        
+    if op == 1:
+        alt_cont.alter_nome_usuario(id)
+        
+    elif op == 2:
+        alt_cont.alter_senha(id)
+        
+    elif op == 3:
+        alt_cont.excluir_conta(id)
+        
+    else:
+        printc('verde', 'Saindo...')
+        sleep(1)
+        sys.exit()
+        
+    
+def importar_dados():
+    """
+    Importar dados
+    """
+    limpar_tela()
+    
+    importar = Importar()
+    
+    op = int(input(telas.importar_dados))
+    while op not in [1, 2, 9]:
+        limpar_tela()
+        printc('vermelho', 'Opção inválida, tente novamente: ')
+        op = int(input(telas.importar_dados))
+        
+    if op == 1:
+        importar.criar_zip()
+        
+    elif op == 2:
+        importar.importar_url()
+        
+    else:
+        printc('verde', 'Saindo...')
+        sleep(1)
+        sys.exit()
+        
+    
+def comentarios(id):
+    """
+    Comentários dos usuarios
+    """
+    comen = Comentarios()
+    op = int(input(telas.comentarios))
+    while op not in [1, 2, 3, 9]:
+        limpar_tela()
+        printc('vermelho', 'Opção inválida, tente novamente: ')
+        op = int(input(telas.comentarios))
+
+    if op == 1:
+        comen.visualizar_comentarios()
+
+    elif op == 2:
+        comen.editar_comentario(id)
+        
+    elif op == 3:
+        comen.adicionar_comentario(id)
+
+    else:
+        printc('verde', 'Saindo...')
+        sleep(1)
+        sys.exit()  
 
 if __name__ == '__main__':
     main()
-

@@ -11,6 +11,7 @@ class Login:
     def __init__(self):
         self.usuario = ''
         self.hash_senha = ''
+        self.id = 0
 
     def get_infos(self):
         """
@@ -23,6 +24,8 @@ class Login:
             limpar_tela()
             self.usuario = str(input('Nome de usuário: '))
             senha = str(input('Sua senha: '))
+            
+        return self.id
 
 
     def __verificar_credenciais(self, senha):
@@ -37,6 +40,8 @@ class Login:
         comando_sql = "SELECT * FROM usuarios WHERE nome = ?"
         cursor.execute(comando_sql, (self.usuario,))
         usuario = cursor.fetchone()
+        
+        self.id = usuario[0]
 
         # Verificar se o usuário existe e se a senha está correta
         if usuario and bcrypt.checkpw(senha.encode('utf-8'), usuario[2]):

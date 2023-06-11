@@ -30,4 +30,4 @@ Critérios de Avaliação:
 [3.0 pontos] Implementação de pelo menos dez UI.
 [3.0 pontos] Modelagem do número mínimo de tabelas e implementação das operações.
 [2.0 pontos] Codificação da funcionalidade para exportação de dados no formato JSON.
-[2.0 pontos] Implementação da funcionalidade para importação dosdados.
+[2.0 pontos] Implementação da funcionalidade para importação dos dados.
