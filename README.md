@@ -1,4 +1,35 @@
 # Fatec-Python
+
+Alunos: Gabriel Gomes Machioni
+        César Silva Pedro
+
+Tema: Blog de Receitas
+
+Principais ferramentas utilizadas:
+    - Python - Linguagem
+    - Sqlite - Banco de dados
+
+Outras bibliotecas Usadas:
+    - poetry
+    - sqlite3 
+    - bcrypt
+    - time
+    - getpass
+    - http.server
+    - socketserver
+    - json
+    - zipfile
+
+Instalações Necessárias:
+    - poetry (pip install poetry)
+        - instalação das dependencias (poetry install)
+
+    Caso não consiga usar o petry será necessário instalar as dependencias local:
+        bcrypt (pip install bcrypt)
+
+---------------------------------------------------------------------------------------
+
+INSTRUÇÕES / REQUESITOS
 Prova_B2_TopEspInformatica
 
 Objetivo: 

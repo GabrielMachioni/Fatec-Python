@@ -39,6 +39,7 @@ def fazer_login():
     Fazer Login do Usuário
     """
     limpar_tela()
+    printc('verde', telas.tela_login)
     login_user = login.Login()
 
     id = login_user.get_infos()
@@ -53,7 +54,7 @@ def fazer_cadastro():
     limpar_tela()
     new_user = cadastro.Cadastro()
 
-    printc('amarelo', telas.menu_cadastro)
+    printc('amarelo', telas.tela_cadastro)
 
     new_user.get_informations()
     sleep(1)
@@ -65,7 +66,7 @@ def mostrar_sobre():
     Mostrar tela Sobre
     """
     limpar_tela()
-    print(telas.tela_sobre)  # TODO: adc sobre
+    printc('verde', telas.tela_sobre)
     enter = str(input('Aperte ENTER para continuar...'))
     main()
 
@@ -145,7 +146,7 @@ def config_conta(id):
     alt_cont = alterar_conta.AlterarConta()
     
     op = int(input(telas.config_conta))
-    while op not in [1, 2, 3, 9]:
+    while op not in [1, 2, 3, 8, 9]:
         limpar_tela()
         printc('vermelho', 'Opção inválida, tente novamente: ')
         op = int(input(telas.config_conta))
@@ -158,6 +159,9 @@ def config_conta(id):
         
     elif op == 3:
         alt_cont.excluir_conta(id)
+        
+    elif op == 8:
+        user_logado(id)
         
     else:
         printc('verde', 'Saindo...')
@@ -197,13 +201,13 @@ def importar_dados(id):
     user_logado(id)
     
 def comentarios(id):
-    limpar_tela()
     """
     Comentários dos usuarios
     """
+    limpar_tela()
     comen = Comentarios()
     op = int(input(telas.comentarios))
-    while op not in [1, 2, 3, 4, 9]:
+    while op not in [1, 2, 3, 4, 8, 9]:
         limpar_tela()
         printc('vermelho', 'Opção inválida, tente novamente: ')
         op = int(input(telas.comentarios))
@@ -219,6 +223,9 @@ def comentarios(id):
 
     elif op == 4:
         comen.excluir_comentario(id)
+        
+    elif op == 8:
+        user_logado(id)
 
     else:
         printc('verde', 'Saindo...')

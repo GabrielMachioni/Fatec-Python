@@ -4,6 +4,8 @@ import json
 import zipfile
 
 from utils.funcoes_auxiliares import printc, limpar_tela
+from utils.receitas import Receitas
+from utils.comentarios import Comentarios
 
            
 class Importar:
@@ -19,41 +21,45 @@ class Importar:
         """
         self.dados = {
             'autores_projeto': {
-                'aluno_1': '',
-                'aluno_2': ''
+                'aluno_1': 'César Silva Pedro',
+                'ra_aluno_1': '2840481921015',
+                'aluno_2': 'Gabriel Gomes Machioni',
+                'ra_aluno_2': '2840482021014'
             },
-            'receitas': [],
-            'conta_logada': {
-                'nome': '',
-                'id': 0
-            }
+            'tema': 'Blog de Receitas',
+            'objetivos': 'O projeto apresentado está utilizando a linguagem "Python" e o banco de dados "Sqlite".',
+            'receitas': Receitas().get_infos_json(),
+            'comentarios': Comentarios().get_infos_json()
         }
+        return self.dados
         
     def criar_zip(self):
-        # Exportar dados para JSON
+        """
+        Cria zip com json
+        """
+        self.recuperar_dados()
+        
         json_data = json.dumps(self.dados)
-        # Criar arquivo JSON
+        
         with open('dados.json', 'w') as file:
             file.write(json_data)
             
-        # Compactar arquivo JSON em um arquivo zip
         with zipfile.ZipFile('dados.zip', 'w') as zip_file:
             zip_file.write('dados.json')
     
     def importar_url(self):
+        self.criar_zip()
+        
         class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
             def do_POST(self):
                 if self.path == '/export':
-                    content_length = int(self.headers.get('Content-Length'))
-                    post_data = self.rfile.read(content_length)
                     self.send_response(200)
                     self.end_headers()
-                    with open('dados.zip', 'wb') as file:
-                        file.write(post_data)
-                    print("Dados exportados com sucesso.")
+                        
+                    printc("verde", "Dados exportados com sucesso.")
         
-        # Inicia o servidor local
         with socketserver.TCPServer(("", 8000), MyRequestHandler) as httpd:
-            print(f"Servidor rodando em http://localhost:8000/")
+            printc("verde", "Servidor rodando em: http://localhost:8000/")
+            
             httpd.serve_forever()
             
