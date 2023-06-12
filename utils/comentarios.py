@@ -1,10 +1,11 @@
 import sqlite3
-
+from utils.funcoes_auxiliares import limpar_tela
 class Comentarios:
     def __init__(self):
         pass
     
     def visualizar_comentarios(self):
+        limpar_tela()
         """
         Visualizar comentarios disponíveis
         """
@@ -30,6 +31,7 @@ class Comentarios:
         conexao.close()
         
     def adicionar_comentario(self, id):
+        limpar_tela()
         """
         Adiconando um comentario no banco de dados
         """
@@ -57,6 +59,7 @@ class Comentarios:
         
         
     def editar_comentario(self, id):
+        limpar_tela()
         """
         Editar um comentario no banco de dados
         """
@@ -93,6 +96,7 @@ class Comentarios:
         conexao.close()
         
     def excluir_comentario(self, id):
+        limpar_tela()
         """
         Excluir um comentario
         """
@@ -143,6 +147,7 @@ class Comentarios:
         
         
     def tabela_exists(self):
+        limpar_tela()
         """
         Cria a tabela comentarios caso nao exista
         """

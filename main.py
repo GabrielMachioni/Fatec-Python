@@ -197,6 +197,7 @@ def importar_dados(id):
     user_logado(id)
     
 def comentarios(id):
+    limpar_tela()
     """
     Comentários dos usuarios
     """
